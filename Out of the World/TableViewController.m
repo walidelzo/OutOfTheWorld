@@ -88,13 +88,13 @@
 -(void)addSpaceObject:(OWSpaceObjects *)spaceObeject {
   
     [self.addedSpaceObjects addObject: spaceObeject];
-    NSLog(@"name is :%@", spaceObeject.planetName);
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.tableView reloadData];
 }
 -(void)DidCancel{
     
-    NSLog(@"did cancel");
+   
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
