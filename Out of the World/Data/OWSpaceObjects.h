@@ -26,6 +26,6 @@
 
 #pragma mark Methods
 //we can init the array of the dictionaries
--(id)initWithData : (NSDictionary*) data ;
+-(id)initWithData : (NSDictionary*) data andImage :(UIImage*)image ;
 
 @end
