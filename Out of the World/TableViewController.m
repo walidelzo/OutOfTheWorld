@@ -13,10 +13,7 @@
 #import "DataOfPlanetsViewController.h"
 @interface TableViewController ()
 
-@property (strong,nonatomic) OWSpaceObjects *myDics;
-@property (strong ,nonatomic) NSMutableArray * myarray ;
-@property (strong,nonatomic) NSMutableArray *addedSpaceObjects;
-@property(strong,nonatomic)UIImage *Image;
+
 @end
 
 @implementation TableViewController
@@ -178,7 +175,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ([self.addedSpaceObjects count]){
+    if (_addedSpaceObjects){
         return 2;
     }else{
         return 1;
@@ -187,7 +184,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section ==1){
-        return [self.addedSpaceObjects count];
+        return self.addedSpaceObjects.count;
     }else{
         return self.myarray.count;
     }
@@ -197,18 +194,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tablePlants" forIndexPath:indexPath];
     
-    if (indexPath.section ==1){
+    if (indexPath.section == 1){
         OWSpaceObjects *spacObject=[self.addedSpaceObjects objectAtIndex: indexPath.row];
         cell.textLabel.text=spacObject.planetName;
         cell.detailTextLabel.text=spacObject.planetNikeName;
         cell.imageView.image=spacObject.planetImage;
         
-    }else
-    {
+    }else  if (indexPath.section ==0){
+    
         OWSpaceObjects *plant=[self.myarray objectAtIndex:indexPath.row];
         cell.textLabel.text=plant.planetName;
         cell.detailTextLabel.text=plant.planetNikeName;
         cell.imageView.image=plant.planetImage;
+   
+        
     }
     
     cell.backgroundColor=[UIColor clearColor];

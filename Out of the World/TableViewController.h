@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "addSpaceObejectViewController.h"
 @interface TableViewController : UITableViewController<OWaddSpaceObjecViewControllDelegate>
-
+@property (strong,nonatomic) OWSpaceObjects *myDics;
+@property (strong ,nonatomic) NSMutableArray * myarray ;
+@property(strong,nonatomic)UIImage *Image;
+@property (strong,nonatomic) NSMutableArray *addedSpaceObjects;
 @end
