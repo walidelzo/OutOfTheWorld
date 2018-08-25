@@ -10,5 +10,4 @@
 #import "OWSpaceObjects.h"
 @interface DataOfPlanetsViewController : UIViewController<UITabBarDelegate,UITableViewDataSource>
 @property (strong,nonatomic) OWSpaceObjects *spaceObject;
-
 @end

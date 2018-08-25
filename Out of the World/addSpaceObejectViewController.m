@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIImage * orionImage  =[UIImage imageNamed:@"Images/Orion.jpg"];
-   self.view.backgroundColor=[UIColor colorWithPatternImage:orionImage];
+    self.view.backgroundColor=[UIColor colorWithPatternImage:orionImage];
     
     
     
@@ -30,21 +30,30 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)CancelButton:(UIButton *)sender {
     [self.delegate DidCancel];
 }
 
 - (IBAction)AddButton:(UIButton *)sender {
-    [self.delegate addSpaceObject:[self returnSpaceObject]];
+    if ([self.nameTextFiled.text isEqualToString:@"" ] && [self.nikeNameTextField.text isEqualToString:@""] ){
+        
+        UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"alert" message:@"you must enter the planet name and planet nike name " preferredStyle:UIAlertControllerStyleAlert ];
+        UIAlertAction *action=[UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
+    else[self.delegate addSpaceObject:[self returnSpaceObject]];
+    
 }
 
 -(OWSpaceObjects *)returnSpaceObject{
